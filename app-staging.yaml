@@ -1,0 +1,24 @@
+service: staging-llm-service
+runtime: python
+env: flex
+#entrypoint: gunicorn -b :$PORT main:app
+
+entrypoint: gunicorn -w 1 -k uvicorn.workers.UvicornWorker main:app --timeout 300
+#instance_class: F2
+env_variables:
+  PY_ENV: "staging"
+
+manual_scaling:
+  instances: 1
+
+runtime_config:
+  operating_system: "ubuntu22"
+  runtime_version: "3.12"
+
+network:
+  name: staging-private-network
+
+skip_files:
+  - ^\.idea
+  - ^temp
+  - ^venv
