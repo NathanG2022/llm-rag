@@ -2,3 +2,7 @@
 /.idea/
 myenv/
 __pycache__/
+config/mobile-app-services-1a26dd1943d6.json
+config/.env.local
+config/.env.staging
+qa.ipynb
